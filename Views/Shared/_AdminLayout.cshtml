@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<OnlineExam.Models.Exam>
+
+@{
+    ViewData["Title"] = "Admin";
+    var userRole = ViewBag.Role as string;
+}
+
+<h1>Available Exams</h1>
+
+@if (Model.Any())
+{
+    <ul class="list-group">
+        @foreach (var exam in Model)
+        {
+            <li class="list-group-item">
+                <h5>@exam.Title</h5>
+                <p>@exam.Description</p>
+
+             
+                    <a asp-action="Edit" asp-route-id="@exam.ExamId">Edit</a>
+                    <a asp-action="Details" asp-route-id="@exam.ExamId">Details</a>
+                    <a asp-action="Delete" asp-route-id="@exam.ExamId">Delete</a>
+
+                
+               
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No exams are currently available.</p>
+}

@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "_Layout";
+}
+@{
+    if (User.IsInRole("Student"))
+    {
+        Layout = "/Views/Shared/_StudentLayout.cshtml";
+    }
+    else if (User.IsInRole("Admin"))
+    {
+        Layout = "/Views/Shared/_AdminLayout.cshtml";
+    }
+    
+}

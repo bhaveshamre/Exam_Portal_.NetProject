@@ -1,0 +1,43 @@
+﻿@model IEnumerable<OnlineExam.Models.Exam>
+
+@{
+    ViewData["Title"] = "Available Exams";
+    var userRole = Context.Session.GetString("Role");
+}
+
+<h1>Available Exams</h1>
+
+@if (Model.Any())
+{
+    <ul class="list-group">
+        @foreach (var exam in Model)
+        {
+            <li class="list-group-item">
+                <h5>@exam.Title</h5>
+                <p>@exam.Description</p>
+
+                @switch (userRole)
+                {
+                    case "Admin":
+                       
+                        break;
+
+                    case "Student":
+                        <a href="@Url.Action("StartExam", "Exams", new { id = exam.ExamId })" class="btn btn-primary">Start Exam</a>
+                        break;
+
+                    default:
+                        <a asp-action="Edit" asp-route-id="@exam.ExamId" class="btn btn-secondary">Edit</a>
+                        <a asp-action="Details" asp-route-id="@exam.ExamId" class="btn btn-info">Details</a>
+                        <a asp-action="Delete" asp-route-id="@exam.ExamId" class="btn btn-danger">Delete</a>
+                        
+                        break;
+                }
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No exams are currently available.</p>
+}

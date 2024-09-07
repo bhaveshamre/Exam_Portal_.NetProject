@@ -1,0 +1,55 @@
+﻿@model OnlineExam.Models.Exam
+
+@{
+    ViewData["Title"] = "Start Exam";
+}
+
+<h1>@Model.Title</h1>
+
+<p>@Model.Description</p>
+<br />
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<form asp-action="SubmitExam" method="post">
+    @foreach (var question in Model.Questions)
+    {
+        <div class="form-group">
+            <label>@question.QuestionText</label>
+            <div class="form-check">
+                <input type="radio" name="answers[@question.QuestionId]" value="A" class="form-check-input" id="question_@question.OptionA">
+                <label class="form-check-label" for="question_@question.OptionA">
+                    @question.OptionA
+                </label>
+            </div>
+            <div class="form-check">
+                <input type="radio" name="answers[@question.QuestionId]" value="B" class="form-check-input" id="question_@question.OptionB">
+                <label class="form-check-label" for="question_@question.OptionB">
+                    @question.OptionB
+                </label>
+            </div>
+            <div class="form-check">
+                <input type="radio" name="answers[@question.QuestionId]" value="C" class="form-check-input" id="question_@question.OptionC">
+                <label class="form-check-label" for="question_@question.OptionC">
+                    @question.OptionC
+                </label>
+            </div>
+            <div class="form-check">
+                <input type="radio" name="answers[@question.QuestionId]" value="D" class="form-check-input" id="question_@question.OptionD">
+                <label class="form-check-label" for="question_@question.OptionD">
+                    @question.OptionD
+                </label>
+            </div>
+        </div>
+    }
+    <input type="hidden" name="examId" value="@Model.ExamId" />
+    <button type="submit" class="btn btn-primary">Submit Exam</button>
+</form>
+<br />
+<div>
+    <a asp-action="Index">Back to</a>
+</div>

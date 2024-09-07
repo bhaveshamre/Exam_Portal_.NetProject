@@ -1,0 +1,29 @@
+﻿@model IEnumerable<OnlineExam.Models.Exam>
+
+@{
+    ViewData["Title"] = "SelectExam";
+}
+
+<h1>Select Exam</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var exam in Model)
+        {
+            <tr>
+                <td>@exam.Title</td>
+                <td>@exam.Description</td>
+                <td>
+                    <a asp-action="AddQuestions" asp-route-id="@exam.ExamId" class="btn btn-primary">Add Questions</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

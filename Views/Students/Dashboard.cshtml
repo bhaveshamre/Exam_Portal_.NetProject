@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1>Dashboard</h1>
+
+<!-- Bootstrap Cards for Navigation -->
+<div class="row">
+    <!-- Students Card -->
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Students</h5>
+                <p class="card-text">Manage students in the system.</p>
+                <a href="@Url.Action("Index", "Students")" class="btn btn-primary">Go to Students</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exams Card -->
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Exams</h5>
+                <p class="card-text">Manage exams and scheduling.</p>
+                <a href="@Url.Action("Create", "Exams")" class="btn btn-primary">Go to Exams</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Card -->
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Results</h5>
+                <p class="card-text">View and manage exam results.</p>
+                <a href="@Url.Action("Index", "Results")" class="btn btn-primary">Go to Results</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Questions Card -->
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Questions</h5>
+                <p class="card-text">Add and manage questions for exams.</p>
+                <a href="@Url.Action("SelectExam", "Questions")" class="btn btn-primary">Add Questions</a>
+            </div>
+        </div>
+    </div>
+</div>
